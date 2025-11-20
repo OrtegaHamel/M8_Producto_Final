@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="mb-4">Lista de Eventos</h1>
+<a href="{% url 'crear_evento' %}" class="btn btn-success mb-3">Crear Evento</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Banda</th>
+            <th>Hora</th>
+            <th>Precio</th>
+            <th>Descripción</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for evento in eventos %}
+        <tr>
+            <td>{{ evento.banda.nombre }}</td>
+            <td>{{ evento.hora }}</td>
+            <td>${{ evento.precio }}</td>
+            <td>{{ evento.descripcion }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

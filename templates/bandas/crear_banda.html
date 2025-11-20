@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h2 class="mb-4">Crear Banda</h2>
+        <form method="post" class="needs-validation" novalidate>
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ form.nombre.label_tag }}
+                {{ form.nombre }}
+            </div>
+            <div class="mb-3">
+                {{ form.responsable.label_tag }}
+                {{ form.responsable }}
+            </div>
+            <div class="mb-3">
+                {{ form.telefono.label_tag }}
+                {{ form.telefono }}
+            </div>
+            <div class="mb-3">
+                {{ form.correo.label_tag }}
+                {{ form.correo }}
+            </div>
+            <div class="mb-3">
+                {{ form.redes_sociales.label_tag }}
+                {{ form.redes_sociales }}
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="mb-4">Lista de Bandas</h1>
+<a href="{% url 'crear_banda' %}" class="btn btn-success mb-3">Crear Banda</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Responsable</th>
+            <th>Teléfono</th>
+            <th>Correo</th>
+            <th>Redes Sociales</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for banda in bandas %}
+        <tr>
+            <td>{{ banda.nombre }}</td>
+            <td>{{ banda.responsable }}</td>
+            <td>{{ banda.telefono }}</td>
+            <td>{{ banda.correo }}</td>
+            <td><a href="{{ banda.redes_sociales }}" target="_blank">Enlace</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

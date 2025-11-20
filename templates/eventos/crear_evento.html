@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h2 class="mb-4">Crear Evento</h2>
+        <form method="post" class="needs-validation" novalidate>
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ form.banda.label_tag }}
+                {{ form.banda }}
+            </div>
+            <div class="mb-3">
+                {{ form.hora.label_tag }}
+                {{ form.hora }}
+            </div>
+            <div class="mb-3">
+                {{ form.precio.label_tag }}
+                {{ form.precio }}
+            </div>
+            <div class="mb-3">
+                {{ form.descripcion.label_tag }}
+                {{ form.descripcion }}
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
