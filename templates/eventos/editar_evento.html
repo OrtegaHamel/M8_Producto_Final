@@ -3,7 +3,7 @@
 {% block content %}
 <div class="row justify-content-center">
     <div class="col-md-6">
-        <h2 class="mb-4">Crear Evento</h2>
+        <h2 class="mb-4">Editar Evento</h2>
 
         {% if messages %}
             {% for message in messages %}
@@ -13,9 +13,8 @@
             {% endfor %}
         {% endif %}
 
-        <form method="post" class="needs-validation" novalidate>
+        <form method="post">
             {% csrf_token %}
-
             <div class="mb-3">
                 {{ form.banda.label_tag }}
                 {{ form.banda }}
@@ -23,24 +22,20 @@
                     <div class="form-text">{{ form.banda.help_text|safe }}</div>
                 {% endif %}
             </div>
-
             <div class="mb-3">
                 {{ form.hora.label_tag }}
                 {{ form.hora }}
             </div>
-
             <div class="mb-3">
                 {{ form.precio.label_tag }}
                 {{ form.precio }}
             </div>
-
             <div class="mb-3">
                 {{ form.descripcion.label_tag }}
                 {{ form.descripcion }}
             </div>
-
             <div class="d-flex justify-content-between">
-                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                 <a href="{% url 'eventos:lista_eventos' %}" class="btn btn-secondary">Volver</a>
             </div>
         </form>

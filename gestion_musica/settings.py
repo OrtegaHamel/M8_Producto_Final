@@ -66,8 +66,12 @@ WSGI_APPLICATION = 'gestion_musica.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'gestion_musica_db',  # Nombre de la base de datos
+        'USER': 'postgres',         # Usuario de PostgreSQL
+        'PASSWORD': 'root',  # Contraseña del usuario
+        'HOST': 'localhost',          # Host de la base de datos
+        'PORT': '5432',               # Puerto de PostgreSQL
     }
 }
 
@@ -112,3 +116,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = '/eventos/'
+LOGIN_URL = '/usuarios/login/'
+LOGOUT_REDIRECT_URL = '/usuarios/login/'
