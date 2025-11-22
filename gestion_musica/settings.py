@@ -103,10 +103,6 @@ USE_TZ = True
 # STATIC FILES
 STATIC_URL = '/static/'
 
-# Tus archivos estáticos locales para desarrollo
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
 
 # En Render / producción, Django los junta aquí
 STATIC_ROOT = BASE_DIR / "staticfiles"
