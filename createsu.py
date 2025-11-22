@@ -1,4 +1,9 @@
+import os
+import django
 from django.contrib.auth.models import User
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'gestion_musica.settings')
+django.setup()
 
 username = "root"
 password = "root"
