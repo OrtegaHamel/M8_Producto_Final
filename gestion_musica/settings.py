@@ -1,13 +1,13 @@
-from pathlib import Path
 import os
+from pathlib import Path
+import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-jnm8n4s@64is6vb_z717csox-k!bt-rtnbf)sndalz_a^xxdzz'
+SECRET_KEY = os.getenv("SECRET_KEY", "dev-secret-key-por-defecto")
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
-DEBUG = True
-
-ALLOWED_HOSTS = ['*']   # Necesario para Render
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost").split(",")
 
 
 # Applications
@@ -74,6 +74,16 @@ DATABASES = {
     }
 }
 
+# DATABASE EN NEON
+DATABASES = {
+    'default': dj_database_url.config(
+        default=os.getenv("DATABASE_URL"),
+        conn_max_age=600,
+        ssl_require=True
+    )
+}
+
+
 
 # Passwords
 AUTH_PASSWORD_VALIDATORS = [
@@ -101,7 +111,7 @@ STATICFILES_DIRS = [
 
 # En Render / producción, Django los junta aquí
 STATIC_ROOT = BASE_DIR / "staticfiles"
-
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
