@@ -1,0 +1,190 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Estilos personalizados -->
+<style>
+    :root {
+        --primary-color: #6c5ce7;
+        --secondary-color: #fd79a8;
+        --light-color: #f8f9fa;
+        --dark-color: #2d3436;
+    }
+
+    body {
+        background-color: var(--light-color);
+    }
+
+    .hero-section {
+        background: linear-gradient(135deg, var(--primary-color), #a29bfe);
+        color: white;
+        padding: 4rem 0;
+        text-align: center;
+        margin-bottom: 2rem;
+        border-radius: 0 0 20px 20px;
+    }
+
+    .carousel-container {
+        background-color: white;
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .carousel-item {
+        background: linear-gradient(135deg, var(--primary-color), #a29bfe);
+        border-radius: 15px;
+        color: white;
+        padding: 20px;
+        height: 300px;
+    }
+
+    .carousel-caption {
+        text-align: center;
+        bottom: 2rem;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    }
+
+    .event-card {
+        transition: transform 0.3s;
+        border: none;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: white;
+        height: 100%;
+    }
+
+    .event-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .badge-custom {
+        background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    }
+
+    .btn-custom {
+        background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        border: none;
+        color: white;
+        font-weight: bold;
+    }
+
+    .section-title {
+        color: var(--primary-color);
+        position: relative;
+        display: inline-block;
+        margin-bottom: 2rem;
+        font-weight: bold;
+    }
+
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 50%;
+        height: 3px;
+        background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    }
+
+    .carousel-control-prev, .carousel-control-next {
+        width: 5%;
+    }
+
+    .carousel-indicators [data-bs-target] {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+    }
+</style>
+
+<!-- Sección Hero -->
+<div class="hero-section">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Cartelera de Eventos</h1>
+        <p class="lead">Descubre los mejores eventos de música en vivo</p>
+    </div>
+</div>
+
+<div class="container my-4">
+    <!-- Carrusel para eventos del mes actual -->
+    {% if eventos_mes_actual %}
+    <h2 class="section-title">Eventos de este mes</h2>
+    <div class="carousel-container mb-5">
+        <div id="eventosMesActualCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                {% for evento in eventos_mes_actual %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <div class="text-center p-4">
+                        <h3 class="mb-3">{{ evento.banda.nombre }}</h3>
+                        <h5 class="mb-3">{{ evento.hora|date:"d/m/Y H:i" }}</h5>
+                        <p class="mb-4">{{ evento.descripcion }}</p>
+                        <span class="badge badge-custom p-2">${{ evento.precio }}</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <!-- Controles del carrusel -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#eventosMesActualCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#eventosMesActualCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+            <!-- Indicadores del carrusel -->
+            <div class="carousel-indicators">
+                {% for evento in eventos_mes_actual %}
+                <button type="button" data-bs-target="#eventosMesActualCarousel" data-bs-slide-to="{{ forloop.counter0 }}"
+                        class="{% if forloop.first %}active{% endif %}" aria-current="{% if forloop.first %}true{% endif %}"
+                        aria-label="Slide {{ forloop.counter }}"></button>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="alert alert-info text-center">
+        No hay eventos programados para este mes.
+    </div>
+    {% endif %}
+
+    <!-- Sección de próximos eventos -->
+    <h2 class="section-title">Próximos Eventos</h2>
+    {% if eventos_futuros %}
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        {% for evento in eventos_futuros %}
+        <div class="col">
+            <div class="card event-card h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ evento.banda.nombre }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ evento.hora|date:"d/m/Y" }}</h6>
+                    <p class="card-text">{{ evento.descripcion }}</p>
+                </div>
+                <div class="card-footer bg-transparent text-center">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="badge badge-custom p-2">${{ evento.precio }}</span>
+                        <span class="text-muted">{{ evento.hora|date:"H:i" }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="alert alert-info text-center">
+        No hay eventos programados después de este mes.
+    </div>
+    {% endif %}
+
+    <!-- Botón de inicio de sesión -->
+    <div class="text-center my-5">
+        <a href="{% url 'usuarios:login' %}" class="btn btn-custom btn-lg px-4 py-2 rounded-pill">
+            Iniciar Sesión para Gestionar
+        </a>
+    </div>
+</div>
+{% endblock %}
+
+

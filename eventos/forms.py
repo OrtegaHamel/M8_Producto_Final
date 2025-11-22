@@ -27,3 +27,23 @@ class EventoForm(forms.ModelForm):
             'Si la banda no está en la lista, '
             '<a href="/bandas/crear/" target="_blank">crea una nueva banda aquí</a>.'
         )
+
+
+
+class BusquedaEventosForm(forms.Form):
+    banda = forms.ModelChoiceField(
+        queryset=Banda.objects.all(),
+        required=False,
+        label="Buscar por Banda",
+        empty_label="Seleccione una banda"
+    )
+    fecha_inicio = forms.DateField(
+        required=False,
+        label="Fecha de Inicio",
+        widget=forms.DateInput(attrs={'type': 'date'})
+    )
+    fecha_fin = forms.DateField(
+        required=False,
+        label="Fecha de Fin",
+        widget=forms.DateInput(attrs={'type': 'date'})
+    )
