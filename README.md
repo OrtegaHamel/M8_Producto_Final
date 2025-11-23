@@ -165,7 +165,7 @@ Ya existen dos usuarios de prueba, organizados en grupos con permisos distintos:
 
 | Usuario | Contraseña | Grupo | Permisos |
 | :--- | :--- | :--- | :--- |
-| **administrador1** | `contrasena123` | Administradores | Acceso total a todo el sistema |
+| **administrador1** | `contrasena123` | Productores | Acceso total a todo el sistema |
 | **basico1** | `contrasena123` | Básico | Puede ver, pero no modificar información |
 
 
