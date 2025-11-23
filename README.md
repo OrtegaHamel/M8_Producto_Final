@@ -29,16 +29,16 @@ para cada uno. Se buscó construir una herramienta clara, eficiente y
 adaptable a distintos locales o centros culturales.
 
 Para mantener el código ordenado y escalable, el sistema se estructuró
-de manera **modular**, dividido en tres aplicaciones independientes:\
-- **usuarios**\
-- **bandas**\
+de manera **modular**, dividido en tres aplicaciones independientes:
+- **usuarios**
+- **bandas**
 - **eventos**
 
 A partir de esta planificación, se diseñó la arquitectura del sistema
 siguiendo buenas prácticas de desarrollo, incluyendo: - Controladores
-separados por funcionalidad\
-- Reutilización de componentes\
-- Estructura clara de rutas\
+separados por funcionalidad
+- Reutilización de componentes
+- Estructura clara de rutas
 - Vistas organizadas y coherentes
 
 El despliegue se realizó en Render, utilizando una base de datos PostgreSQL externa (Neon) para garantizar persistencia. Se configuró el manejo de archivos estáticos, las variables de entorno y el servidor Gunicorn. También se automatizaron las migraciones y la creación del superusuario inicial para facilitar la puesta en marcha del sistema.
@@ -52,10 +52,10 @@ planificación, diseño, implementación, pruebas y despliegue.
 
 ## 💻 Tecnologías utilizadas
 
--   **Backend:** Python, Django\
--   **Frontend:** HTML, CSS, JavaScript\
--   **Base de datos:** PostgreSQL con Neon como servicio externo\
--   **Entorno y despliegue:** ender, utilizando Gunicorn como servidor WSGI y Whitenoise para servir archivos estáticos\
+-   **Backend:** Python, Django
+-   **Frontend:** HTML, CSS, JavaScript
+-   **Base de datos:** PostgreSQL con Neon como servicio externo
+-   **Entorno y despliegue:** ender, utilizando Gunicorn como servidor WSGI y Whitenoise para servir archivos estáticos
 -   **Control de versiones:** GitHub para manejo estructurado del proyecto y despliegue continuo.
 
 Estas tecnologías fueron seleccionadas por su solidez, compatibilidad y
@@ -66,17 +66,18 @@ presencia en la industria del desarrollo web.
 ## 📦 Estructura del proyecto
 
 M8_Producto_Final/
-    gestion_musica/        - Proyecto principal (settings, urls, wsgi)
-    usuarios/              - App para registro, login y permisos
-    bandas/                - App para gestionar bandas
-    eventos/               - App para gestionar eventos y cartelera
-    static/                - Archivos estáticos (CSS, JS, imágenes)
-    templates/             - Plantillas HTML compartidas
-    createsu.py            - (eliminado luego del deploy)
-    manage.py
-    Procfile
-    requirements.txt
-    README.md
+- gestion_musica/     (Proyecto principal: settings, urls, wsgi)
+- usuarios/           (App para registro, login y permisos)
+- bandas/             (App para gestionar bandas)
+- eventos/            (App para gestionar eventos y cartelera)
+- static/             (Archivos estáticos: CSS, JS, imágenes)
+- templates/          (Plantillas HTML compartidas)
+- createsu.py         (Eliminado luego del deploy)
+- manage.py
+- Procfile
+- requirements.txt
+- README.md
+
 
 ------------------------------------------------------------------------
 
@@ -131,7 +132,7 @@ python manage.py runserver
 
 Ahora puedes entrar en:
 
-👉 http://127.0.0.1:8000\
+👉 http://127.0.0.1:8000
 👉 http://127.0.0.1:8000/admin (para administración)
 
 ------------------------------------------------------------------------
@@ -140,8 +141,8 @@ Ahora puedes entrar en:
 
 El proyecto está desplegado en Render con:
 
--   PostgreSQL administrado por Render\
--   Gunicorn como servidor de producción\
+-   PostgreSQL administrado por Render
+-   Gunicorn como servidor de producción
 -   Procfile para levantar la aplicación
 
 ### 🔧 Configuración usada en Render
@@ -156,6 +157,7 @@ Puedes acceder al sitio desplegado en:
 
 👉 https://cartelera-musica.onrender.com
 
+------------------------------------------------------------------------
 
 ## 🔑 Usuarios Creados
 
@@ -165,10 +167,6 @@ Ya existen dos usuarios de prueba, organizados en grupos con permisos distintos:
 | :--- | :--- | :--- | :--- |
 | **administrador1** | `contrasena123` | Administradores | Acceso total a todo el sistema |
 | **basico1** | `contrasena123` | Básico | Puede ver, pero no modificar información |
-
----
-
-**Recordatorio:** Además de estos, creaste el **superusuario** con credenciales **`root` / `root`** para la administración de Django.
 
 
 ------------------------------------------------------------------------
