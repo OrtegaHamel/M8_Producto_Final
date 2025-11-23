@@ -66,17 +66,17 @@ presencia en la industria del desarrollo web.
 ## 📦 Estructura del proyecto
 
 M8_Producto_Final/
-│── gestion_musica/        # Proyecto principal (settings, urls, wsgi)
-│── usuarios/              # App para registro, login y permisos
-│── bandas/                # App para gestionar bandas
-│── eventos/               # App para gestionar eventos y cartelera
-│── static/                # Archivos estáticos (CSS, JS, imágenes)
-│── templates/             # Plantillas HTML compartidas
-│── createsu.py (eliminado luego del deploy)
-│── manage.py
-│── Procfile
-│── requirements.txt
-│── README.md
+├── gestion_musica/        # Proyecto principal (settings, urls, wsgi)
+├── usuarios/              # App para registro, login y permisos
+├── bandas/                # App para gestionar bandas
+├── eventos/               # App para gestionar eventos y cartelera
+├── static/                # Archivos estáticos (CSS, JS, imágenes)
+├── templates/             # Plantillas HTML compartidas
+├── createsu.py (eliminado luego del deploy)
+├── manage.py
+├── Procfile
+├── requirements.txt
+└── README.md
 
 ------------------------------------------------------------------------
 
@@ -157,19 +157,18 @@ Puedes acceder al sitio desplegado en:
 👉 https://cartelera-musica.onrender.com
 
 
-## 🔑 Usuarios creados
+## 🔑 Usuarios Creados
 
-Ya existen dos usuarios de prueba, organizados en grupos con permisos
-distintos:
+Ya existen dos usuarios de prueba, organizados en grupos con permisos distintos:
 
-  -------------------------------------------------------------------------------------
-  Usuario          Contraseña      Grupo             Permisos
-  ---------------- --------------- ----------------- ----------------------------------
-  administrador1   contrasena123   Administradores   Acceso total a todo el sistema
+| Usuario | Contraseña | Grupo | Permisos |
+| :--- | :--- | :--- | :--- |
+| **administrador1** | `contrasena123` | Administradores | Acceso total a todo el sistema |
+| **basico1** | `contrasena123` | Básico | Puede ver, pero no modificar información |
 
-  basico1          contrasena123   Básico            Puede ver, pero no modificar
-                                                     información
-  -------------------------------------------------------------------------------------
+---
+
+**Recordatorio:** Además de estos, creaste el **superusuario** con credenciales **`root` / `root`** para la administración de Django.
 
 
 ------------------------------------------------------------------------
