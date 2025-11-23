@@ -66,17 +66,17 @@ presencia en la industria del desarrollo web.
 ## 📦 Estructura del proyecto
 
 M8_Producto_Final/
-├── gestion_musica/        # Proyecto principal (settings, urls, wsgi)
-├── usuarios/              # App para registro, login y permisos
-├── bandas/                # App para gestionar bandas
-├── eventos/               # App para gestionar eventos y cartelera
-├── static/                # Archivos estáticos (CSS, JS, imágenes)
-├── templates/             # Plantillas HTML compartidas
-├── createsu.py (eliminado luego del deploy)
-├── manage.py
-├── Procfile
-├── requirements.txt
-└── README.md
+    gestion_musica/        - Proyecto principal (settings, urls, wsgi)
+    usuarios/              - App para registro, login y permisos
+    bandas/                - App para gestionar bandas
+    eventos/               - App para gestionar eventos y cartelera
+    static/                - Archivos estáticos (CSS, JS, imágenes)
+    templates/             - Plantillas HTML compartidas
+    createsu.py            - (eliminado luego del deploy)
+    manage.py
+    Procfile
+    requirements.txt
+    README.md
 
 ------------------------------------------------------------------------
 
