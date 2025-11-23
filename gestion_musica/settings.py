@@ -63,7 +63,7 @@ WSGI_APPLICATION = 'gestion_musica.wsgi.application'
 
 
 # BASE DE DATOS
-if os.getenv("RENDER"):  # Render define esta env var automáticamente
+if os.getenv("RENDER"):  # BD en Neon
     DATABASES = {
         'default': dj_database_url.config(
             default=os.getenv("DATABASE_URL"),
